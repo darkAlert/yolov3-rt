@@ -9,7 +9,7 @@ def parse_model_cfg(path):
         path += '.cfg'
     if not os.path.exists(path) and os.path.exists('cfg' + os.sep + path):  # add cfg/ prefix if omitted
         path = 'cfg' + os.sep + path
-
+    print ('path=',path)
     with open(path, 'r') as f:
         lines = f.read().split('\n')
     lines = [x for x in lines if x and not x.startswith('#')]

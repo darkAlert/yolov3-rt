@@ -1,9 +1,9 @@
 import argparse
 from sys import platform
 
-from models import *  # set ONNX_EXPORT in models.py
-from utils.datasets import *
-from utils.utils import *
+from yolort.models import *  # set ONNX_EXPORT in models.py
+from yolort.utils.datasets import *
+from yolort.utils.utils import *
 
 
 def detect(save_img=False):
@@ -163,11 +163,11 @@ def detect(save_img=False):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='cfg/yolov3-spp.cfg', help='*.cfg path')
-    parser.add_argument('--names', type=str, default='data/coco.names', help='*.names path')
-    parser.add_argument('--weights', type=str, default='weights/yolov3-spp-ultralytics.pt', help='weights path')
-    parser.add_argument('--source', type=str, default='data/samples', help='source')  # input file/folder, 0 for webcam
-    parser.add_argument('--output', type=str, default='output', help='output folder')  # output folder
+    parser.add_argument('--cfg', type=str, default='yolort/cfg/yolov3-spp.cfg', help='*.cfg path')
+    parser.add_argument('--names', type=str, default='yolort/data/coco.names', help='*.names path')
+    parser.add_argument('--weights', type=str, default='yolort/weights/yolov3-spp-ultralytics.pt', help='weights path')
+    parser.add_argument('--source', type=str, default='yolort/data/samples', help='source')  # input file/folder, 0 for webcam
+    parser.add_argument('--output', type=str, default='yolort/output', help='output folder')  # output folder
     parser.add_argument('--img-size', type=int, default=512, help='inference size (pixels)')
     parser.add_argument('--conf-thres', type=float, default=0.3, help='object confidence threshold')
     parser.add_argument('--iou-thres', type=float, default=0.6, help='IOU threshold for NMS')
@@ -180,6 +180,7 @@ if __name__ == '__main__':
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
     parser.add_argument('--augment', action='store_true', help='augmented inference')
     opt = parser.parse_args()
+    opt.source = '/home/darkalert/KazendiJob/Data/HoloVideo/Data/frames/person_7/light-100_temp-5601/garments_3/rotation/cam5/image-00151.jpeg'
     print(opt)
 
     with torch.no_grad():

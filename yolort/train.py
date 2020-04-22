@@ -6,9 +6,9 @@ import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.tensorboard import SummaryWriter
 
 import test  # import test.py to get mAP after each epoch
-from models import *
-from utils.datasets import *
-from utils.utils import *
+from yolort.models import *
+from yolort.utils.datasets import *
+from yolort.utils.utils import *
 
 mixed_precision = True
 try:  # Mixed precision training https://github.com/NVIDIA/apex
