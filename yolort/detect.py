@@ -180,7 +180,6 @@ if __name__ == '__main__':
     parser.add_argument('--agnostic-nms', action='store_true', help='class-agnostic NMS')
     parser.add_argument('--augment', action='store_true', help='augmented inference')
     opt = parser.parse_args()
-    opt.source = '/home/darkalert/KazendiJob/Data/HoloVideo/Data/frames/person_7/light-100_temp-5601/garments_3/rotation/cam5/image-00151.jpeg'
     print(opt)
 
     with torch.no_grad():
