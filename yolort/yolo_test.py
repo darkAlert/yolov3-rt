@@ -27,7 +27,8 @@ def detect():
     names = load_classes(opt.names)
 
     # Warm up:
-    _ = model(torch.zeros((1, 3, img_size, img_size), device=device))
+    img = torch.zeros((1, 3, img_size, img_size), device=device)  # init img
+    _ = model(img.half() if half else img.float())
 
     # Run inference
     for path, img, im0s, vid_cap in dataset:
@@ -84,6 +85,7 @@ if __name__ == '__main__':
 
     opt.device = 'cuda:0'
     opt.source = '/home/darkalert/KazendiJob/Data/HoloVideo/Data/frames/person_7/light-100_temp-5601/garments_3/rotation/cam5/image-00151.jpeg'
+    # opt.half = True
 
     with torch.no_grad():
         detect()
