@@ -113,6 +113,7 @@ def detect(save_img=False):
             s += '%gx%g ' % img.shape[2:]  # print string
             if det is not None and len(det):
                 # Rescale boxes from img_size to im0 size
+                print(img.shape[2:], im0.shape, det[:, :4])
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
 
                 # Print results
